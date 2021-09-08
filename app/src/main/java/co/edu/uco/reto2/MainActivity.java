@@ -55,18 +55,16 @@ public class MainActivity extends AppCompatActivity {
                 String fecha = txtDate.getText().toString();
                 String message = mensaje.getText().toString();
 
-
-
                 calendar = Calendar.getInstance();
                 int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
                 int currentMonth = calendar.get(Calendar.MONTH);
                 int currentYear = calendar.get(Calendar.YEAR);
 
-                if(txtDate.getText().toString().equals("")){
+                if((txtDate.getText().toString().equals("")) || (inputNombre.getText().toString().equals("")) || (inputApellido.getText().toString().equals("")) ){
                     Toast.makeText(getApplicationContext(), R.string.textoToast, Toast.LENGTH_SHORT).show();
                 }else{
                     String birthDate = txtDate.getText().toString();
-                    String[] birthDateArray = birthDate.split("-");
+                    String[] birthDateArray = birthDate.split("/");
 
                     int age = currentYear - Integer.parseInt(birthDateArray[2]);
 
@@ -78,22 +76,20 @@ public class MainActivity extends AppCompatActivity {
                         age++;
                     }
                     if(age >= 18){
-                        message = "Usted es mayor de edad";
+                        message = "Usted es mayor de edad. Su edad es: " + age + " años";
+                        Intent intent = new Intent(MainActivity.this, Mostrar.class);
+                        intent.putExtra("name",name);
+                        intent.putExtra("apellido",apellido);
+                        intent.putExtra("fecha",fecha);
+                        intent.putExtra("mensaje", message);
+                        startActivity(intent);
                     }
                     else{
-                        message = "Usted es menor de edad";
+                        message = "Su edad es : " + age + " años. No puede continuar porque es menor de edad";
+                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
                     }
 
-                    /*Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();*/
                 }
-
-
-                Intent intent = new Intent(MainActivity.this, Mostrar.class);
-                intent.putExtra("name",name);
-                intent.putExtra("apellido",apellido);
-                intent.putExtra("fecha",fecha);
-                intent.putExtra("mensaje", message);
-                startActivity(intent);
 
             }
         });
@@ -112,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 datePickerDialog = new DatePickerDialog(MainActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                        txtDate.setText(dayOfMonth + "-" + (month + 1) + "-" + year);
+                        txtDate.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
                     }
                 }, birthYear, birthMonth, birthDay);
                 datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());

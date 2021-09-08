@@ -1,16 +1,17 @@
 <resources>
-    <string name="app_name">Reto2</string>
-    <string name="calcular_edad">Formulario</string>
-    <string name="inputFecha">Ingrese la fecha</string>
-    <string name="bontonFecha">Fecha</string>
+    <string name="app_name">Formulario</string>
+    <string name="calcular_edad">Ingresa tus datos para continuar</string>
+    <string name="inputFecha"></string>
+    <string name="bontonFecha">Click para seleccionar fecha</string>
     <string name="botonCalcular">Calcular</string>
-    <string name="textoToast">Ingrese la fecha de nacimiento</string>
+    <string name="textoToast">Ingresa todos los campos para continuar</string>
     <string name="formularioNombre">Nombre</string>
     <string name="formularioApellido">Apellido</string>
     <string name="tituloMostrar">Fecha</string>
     <string name="nombre">Su nombre</string>
     <string name="apellido">Su apellido</string>
-    <string name="buttonOk">Regresar</string>
+    <string name="buttonOk">Salir</string>
     <string name="fecha">Fecha</string>
     <string name="mensajeValidacion">Mensaje</string>
+    <string name="titulo">Estos son tus datos</string>
 </resources>
